@@ -4,7 +4,7 @@ class Meals::Api
 
    def self.get_meals  
      puts
-     puts "Connection test: location => API class" 
+     puts "API class" 
      puts  
 
      url = "https://www.themealdb.com/api/json/v1/1/search.php?s"
