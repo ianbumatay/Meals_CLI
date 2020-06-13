@@ -2,6 +2,9 @@
 
 require_relative "../lib/environment"
 
-puts " in the bin executable" 
+puts
+puts "This is the RUN file"  
+puts
 
-Meals::Api.get_meals
+Meals::Api.get_meals 
+binding.pry
