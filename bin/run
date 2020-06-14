@@ -6,7 +6,7 @@ puts
 puts "This is the RUN file"  
 puts
 
-Meals::Api.get_meals 
-#binding.pry 
 
+Meals::Api.get_data
+#binding.pry  
 Meals::Cli.new.call

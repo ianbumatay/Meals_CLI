@@ -2,13 +2,20 @@ class Meals::TheMeals
 
     @@all = []
 
-    attr_accessor :strMeal, :strArea 
+    attr_accessor :strMeal, :strArea, :strCategory, :strYoutube
 
-    def initialize(strMeal, strArea) 
-        @strMeal = strMeal 
-        @strArea  = strArea 
+    def initialize(attributes)
+        attributes.each do |key, value| 
+            self.send(("#{key}="), value) if self.respond_to?("#{key}=")
+        end 
         save
-    end
+      end
+
+    #def initialize(strMeal, strArea) 
+    #    @strMeal = strMeal 
+     #   @strArea  = strArea 
+     #   save
+    #end
 
     def self.all 
         @@all 
@@ -18,9 +25,15 @@ class Meals::TheMeals
         @@all << self 
     end 
 
-    def self.create_from_api(meals_array) 
-        meals_array.each do |meal_hash| 
-            self.new(meal_hash["strMeal"], meal_hash["strArea"])
+    #def self.create_from_api(meals_array) 
+      #  meals_array.each do |meal_hash| 
+       #     self.new(meal_hash["strMeal"], meal_hash["strArea"])
+       # end
+   # end 
+
+    def self.find_by_name(name) 
+        self.all.select do |meal_hash| 
+            meal_hash.name == name 
         end
     end
 
