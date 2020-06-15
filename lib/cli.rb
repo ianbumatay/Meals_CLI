@@ -1,58 +1,70 @@
 class Meals::Cli  
+    
 
-    def call 
-        puts "Welcome!"  
-        puts "________________"
-        puts "Type: 'meals' to see the menu for today" 
+    def call  
+        puts ""
+        puts "---------------  Welcome!  ------------"  
+        puts ""
+        puts "Type: 'meals' to see the menu of International meals"  
+        puts ""
         puts "Type: 'exit' to exit the menu"  
+        puts "----------------------------------------------" 
         Meals::Api.get_data
-        user_input  
-      
+        menu
     end 
 
-    def user_input 
-
-        input = gets.strip.downcase 
-
+    def menu 
+        input = gets.strip.downcase
         if input == "meals" 
-            meals 
-            user_input
+            meals_list 
+            menu
         elsif input == "exit" 
             goodbye 
         else 
             invalid 
-            user_input
+            menu
         end
     end 
 
-    def meals  #print_all 
-        puts "Today's specials are:" 
-        puts
+    def meals_list  
+        puts "" 
+        puts "Meals List:" 
+        puts "-----------"
         Meals::TheMeals.all.each.with_index(1) do |meal, index| 
-            puts "#{index}. #{meal.strMeal}" 
-            puts "            cuisine: #{meal.strArea}"
-        end
-        #prints out the list of all the meal, must iterate trough meals array with #each 
-       
-        puts
+            puts "#{index}. #{meal.strMeal}"
+        end 
+        
+        puts ""
+        puts "Type the name of your the meals number you selected."  
+        puts ""
+
         input = gets.strip.downcase 
-        meals_selection(input) 
+        meals_selected(input) 
         
     end  
 
-    def meals_selection(meal_name) 
-        puts "type the name of your the meals you selected."  
-        puts "#{meal_name}" 
-
-        # find_by_name or index number. use select or detect
+    def meals_selected(meal) 
+        meals = Meals::TheMeals.find_by_name(meal) 
+        meals.each do |meal|  
+            puts "----------------------------"
+            puts "Name: #{meal.strMeal}"  
+            puts "Cusine: #{meal.strArea}" 
+            puts "Category: #{meal.strCategory}" 
+            puts "Youtube: #{meal.strYoutube}" 
+            puts "-----------------------------" 
+            #menu
+        end 
     end
 
-    def goodbye 
+    def goodbye  
+        puts "------------------------------"
         puts "Goodbye and Have a nice day!." 
     end 
 
-    def invalid 
-        puts "invalid key, try again." 
+    def invalid  
+        puts ""
+        puts "Invalid key, try again."  
+        puts "------------------------------"
     end
 
 

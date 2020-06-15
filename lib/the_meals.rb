@@ -6,15 +6,17 @@ class Meals::TheMeals
 
     def initialize(attributes)
         attributes.each do |key, value| 
-            self.send(("#{key}="), value) if self.respond_to?("#{key}=")
+           self.send(("#{key}="), value) if self.respond_to?("#{key}=")
         end 
-        save
-      end
+      save
+    end
 
-    #def initialize(strMeal, strArea) 
-    #    @strMeal = strMeal 
-     #   @strArea  = strArea 
-     #   save
+    #def initialize(strMeal, strArea, strCategory, strYoutube) 
+     #    @strMeal = strMeal 
+      #   @strArea  = strArea  
+       #  @strCategory = strCategory 
+        # @strYoutube = strYoutube
+      #  save
     #end
 
     def self.all 
@@ -32,8 +34,8 @@ class Meals::TheMeals
    # end 
 
     def self.find_by_name(name) 
-        self.all.select do |meal_hash| 
-            meal_hash.name == name 
+        self.all.select do |meal| 
+            meal.strMeal.downcase ==  name
         end
     end
 

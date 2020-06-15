@@ -2,9 +2,7 @@
 
 require_relative "../lib/environment"
 
-puts
-puts "This is the RUN file"  
-puts
+
 
 
 Meals::Api.get_data
