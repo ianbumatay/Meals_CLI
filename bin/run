@@ -7,4 +7,4 @@ require_relative "../lib/environment"
 
 Meals::Api.get_data
 #binding.pry  
-Meals::Cli.new.call
+Meals::Cli.new.run

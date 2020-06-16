@@ -1,24 +1,28 @@
 class Meals::Cli  
     
+    def run 
+        start
+        menu 
+    end
+    
 
-    def call  
+    def start
         puts ""
         puts "---------------  Welcome!  ------------"  
         puts ""
-        puts "Type: 'meals' to see the menu of International meals"  
+        puts "Type: '1' to see the menu of International meals"  
         puts ""
-        puts "Type: 'exit' to exit the menu"  
+        puts "Type: '2' to exit the menu"  
         puts "----------------------------------------------" 
-        Meals::Api.get_data
-        menu
-    end 
+        
+    end
 
-    def menu 
-        input = gets.strip.downcase
-        if input == "meals" 
+    def menu
+        input = gets.strip
+        if input == "1" 
             meals_list 
             menu
-        elsif input == "exit" 
+        elsif input == "2" 
             goodbye 
         else 
             invalid 
@@ -32,41 +36,37 @@ class Meals::Cli
         puts "-----------"
         Meals::TheMeals.all.each.with_index(1) do |meal, index| 
             puts "#{index}. #{meal.strMeal}"
-        end 
+          end 
         
         puts ""
-        puts "Type the name of your the meals number you selected."  
+        puts "Type the name of your the meal you like."  
         puts ""
 
         input = gets.strip.downcase 
-        meals_selected(input) 
-        
+        meals_selected(input)     
     end  
 
     def meals_selected(meal) 
         meals = Meals::TheMeals.find_by_name(meal) 
         meals.each do |meal|  
-            puts "----------------------------"
+            puts "-----------------------------"
             puts "Name: #{meal.strMeal}"  
             puts "Cusine: #{meal.strArea}" 
             puts "Category: #{meal.strCategory}" 
             puts "Youtube: #{meal.strYoutube}" 
             puts "-----------------------------" 
-            #menu
         end 
     end
 
     def goodbye  
-        puts "------------------------------"
-        puts "Goodbye and Have a nice day!." 
+        puts ""
+        puts "----- Goodbye and Have a nice day!. -----" 
+        puts "" 
     end 
 
     def invalid  
         puts ""
-        puts "Invalid key, try again."  
-        puts "------------------------------"
+        puts "----- Invalid key: Please try again. -----"  
+        puts "" 
     end
-
-
-
 end
