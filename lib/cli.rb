@@ -57,7 +57,7 @@ class Meals::Cli
             puts "Category: #{meal.strCategory}" 
             puts "Youtube: #{meal.strYoutube}" 
             puts "-----------------------------" 
-       end 
+       end  
     end
 
     def goodbye  

@@ -11,13 +11,6 @@ class Meals::TheMeals
       save
     end
 
-    #def initialize(strMeal, strArea, strCategory, strYoutube) 
-         #@strMeal = strMeal 
-         #@strArea  = strArea  
-         #@strCategory = strCategory 
-         #@strYoutube = strYoutube
-        #save
-    #end
 
     def self.all 
         @@all 
@@ -28,15 +21,11 @@ class Meals::TheMeals
     end 
 
     def self.create_from_api(meals_array) 
-        meals_array.each do |meal_hash| 
-            self.new(meal_hash)#["strMeal"],meal_hash["strArea"],meal_hash["strCategory"],meal_hash["strYoutube"])
-        end
-      end 
+        meals_array.each {|meal_hash| self.new(meal_hash)}
+    end 
 
     def self.find_by_name(name) 
-        self.all.select do |meal| 
-            meal.strMeal.downcase ==  name
-        end
+        self.all.select {|meal| meal.strMeal.downcase ==  name}    
     end
 
 end
