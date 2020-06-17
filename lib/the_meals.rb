@@ -12,11 +12,11 @@ class Meals::TheMeals
     end
 
     #def initialize(strMeal, strArea, strCategory, strYoutube) 
-     #    @strMeal = strMeal 
-      #   @strArea  = strArea  
-       #  @strCategory = strCategory 
-        # @strYoutube = strYoutube
-      #  save
+         #@strMeal = strMeal 
+         #@strArea  = strArea  
+         #@strCategory = strCategory 
+         #@strYoutube = strYoutube
+        #save
     #end
 
     def self.all 
@@ -27,11 +27,11 @@ class Meals::TheMeals
         @@all << self 
     end 
 
-    #def self.create_from_api(meals_array) 
-      #  meals_array.each do |meal_hash| 
-       #     self.new(meal_hash["strMeal"], meal_hash["strArea"])
-       # end
-   # end 
+    def self.create_from_api(meals_array) 
+        meals_array.each do |meal_hash| 
+            self.new(meal_hash)#["strMeal"],meal_hash["strArea"],meal_hash["strCategory"],meal_hash["strYoutube"])
+        end
+      end 
 
     def self.find_by_name(name) 
         self.all.select do |meal| 

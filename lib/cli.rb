@@ -43,19 +43,21 @@ class Meals::Cli
         puts ""
 
         input = gets.strip.downcase 
+        
         meals_selected(input)     
-    end  
+    end   
+
 
     def meals_selected(meal) 
         meals = Meals::TheMeals.find_by_name(meal) 
         meals.each do |meal|  
             puts "-----------------------------"
             puts "Name: #{meal.strMeal}"  
-            puts "Cusine: #{meal.strArea}" 
+            puts "Cuisine: #{meal.strArea}" 
             puts "Category: #{meal.strCategory}" 
             puts "Youtube: #{meal.strYoutube}" 
             puts "-----------------------------" 
-        end 
+       end 
     end
 
     def goodbye  
