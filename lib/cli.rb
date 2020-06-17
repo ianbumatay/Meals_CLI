@@ -1,8 +1,10 @@
 class Meals::Cli  
     
     def run 
-        start
-        menu 
+        start 
+        Meals::Api.get_data
+        menu  
+        #Meals::Api.get_data
     end
     
 
@@ -12,9 +14,9 @@ class Meals::Cli
         puts ""
         puts "Type: '1' to see the menu of International meals"  
         puts ""
-        puts "Type: '2' to exit the menu"  
-        puts "----------------------------------------------" 
-        
+        puts "Type: '2' to exit the menu" 
+        puts "" 
+        puts "----------------------------------------------"     
     end
 
     def menu
@@ -44,20 +46,31 @@ class Meals::Cli
 
         input = gets.strip.downcase 
         
-        meals_selected(input)     
+        #meals_selected(input) 
+        diplay_meals_index(input) 
     end   
 
 
-    def meals_selected(meal) 
-        meals = Meals::TheMeals.find_by_name(meal) 
-        meals.each do |meal|  
-            puts "-----------------------------"
-            puts "Name: #{meal.strMeal}"  
-            puts "Cuisine: #{meal.strArea}" 
-            puts "Category: #{meal.strCategory}" 
-            puts "Youtube: #{meal.strYoutube}" 
-            puts "-----------------------------" 
-       end  
+    #def meals_selected(meal) 
+       # meals = Meals::TheMeals.find_by_name(meal) 
+       # meals.each do |meal|   
+      
+           # puts "-----------------------------"
+            #puts "Name: #{meal.strMeal}"  
+            #puts "Cuisine: #{meal.strArea}" 
+            #puts "Category: #{meal.strCategory}" 
+            #puts "Youtube: #{meal.strYoutube}" 
+            #puts "-----------------------------"      
+       #end  
+    #end 
+
+    def diplay_meals_index(input) 
+        if input.to_i.between?(1, Meals::TheMeals.all.length)
+            puts ""
+            return input.to_i 
+        end
+        #meal_obj = Meals::TheMeals.all[index]
+        #Meals::Api.get_details(meal_obj) 
     end
 
     def goodbye  

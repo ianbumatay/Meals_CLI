@@ -1,4 +1,4 @@
-class Meals::Api  
+class  Meals::Api
 
   def self.get_data
      
@@ -11,8 +11,5 @@ class Meals::Api
     #meals_array.each do |meal_hash| 
       #binding.pry 
       #Meals::TheMeals.new(meal_hash)
-    #end    
-   end
-
-
+    end   
 end

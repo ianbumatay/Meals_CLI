@@ -5,6 +5,6 @@ require_relative "../lib/environment"
 
 
 
-Meals::Api.get_data
+#Meals::Api.get_data
 #binding.pry  
 Meals::Cli.new.run
