@@ -45,11 +45,26 @@ class Meals::Cli
         puts ""
 
         input = gets.strip.downcase 
-        
-        #meals_selected(input) 
-        diplay_meals_index(input) 
-    end   
+        meals_choices(input)
+    
+        #meal_selected(input)
+    
+    end    
 
+    def meals_choices(input)
+        #input = gets.strip.downcase 
+        if input.to_i.between?(1, Meals::TheMeals.all.length)
+            return input.to_i - 1
+        else
+            return puts "Oops!"
+        end
+    end
+    
+
+    def print_single_meal
+         meal_obj = Meals::TheMeals.all
+         #Meals::Api.get_details(meal_obj) 
+    end
 
     #def meals_selected(meal) 
        # meals = Meals::TheMeals.find_by_name(meal) 
@@ -63,15 +78,6 @@ class Meals::Cli
             #puts "-----------------------------"      
        #end  
     #end 
-
-    def diplay_meals_index(input) 
-        if input.to_i.between?(1, Meals::TheMeals.all.length)
-            puts ""
-            return input.to_i 
-        end
-        #meal_obj = Meals::TheMeals.all[index]
-        #Meals::Api.get_details(meal_obj) 
-    end
 
     def goodbye  
         puts ""

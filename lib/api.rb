@@ -1,4 +1,4 @@
-class  Meals::Api
+class Meals::Api
 
   def self.get_data
      
@@ -11,5 +11,10 @@ class  Meals::Api
     #meals_array.each do |meal_hash| 
       #binding.pry 
       #Meals::TheMeals.new(meal_hash)
-    end   
+    end    
+
+    def self.get_meals_details(meal_obj)
+      url = "https://www.themealdb.com/api/json/v1/1/search.php?s"
+      response = HTTParty.get(url)  
+    end
 end
