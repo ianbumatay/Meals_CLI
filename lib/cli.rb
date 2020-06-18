@@ -44,19 +44,38 @@ class Meals::Cli
         puts "Type the name of your the meal you like."  
         puts ""
 
-        input = gets.strip.downcase 
-        meals_choices(input)
+        #input = gets.strip.downcase 
+        #meals_choices(input)
     
         #meal_selected(input)
-    
-    end    
+        main_loop
+    end     
 
-    def meals_choices(input)
-        #input = gets.strip.downcase 
+    def main_loop
+        loop do 
+            input = meals_choices 
+            case input 
+            when "exit"
+                break 
+            when "ivalid" 
+                next 
+            else
+                puts input 
+                #print_single_meal(input)
+            end
+        end 
+        puts "in main loop method"
+     end
+
+    def meals_choices
+        input = gets.strip.downcase 
+        return input if input == "exit"
         if input.to_i.between?(1, Meals::TheMeals.all.length)
             return input.to_i - 1
+            puts input
         else
-            return puts "Oops!"
+             puts "Oops!"
+             return "invalid"
         end
     end
     
