@@ -5,21 +5,22 @@ class Meals::Cli
         Meals::Api.get_data
         menu  
     end
-    
 
     def introduction
         puts ""
-        puts "---------------  Welcome!  ------------"  
+        puts "        ------  Welcome!  ------ "  
+        puts ""   
+    end
+
+    def menu 
+        puts "----------------- Menu -----------------------"     
         puts ""
         puts "Type: '1' to see the menu of International meals"  
         puts ""
         puts "Type: '2' to exit the menu" 
         puts "" 
         puts "----------------------------------------------"     
-    end
 
-    def menu
-        
         input = gets.strip
         if input == "1" 
             meals_list 
@@ -44,15 +45,15 @@ class Meals::Cli
 
     def main_loop 
 
-        puts "-------------------------------------------"
         puts ""
-        puts "Type 'menu' to go to main menu." 
+        puts "Type: 'menu' to go to main menu." 
         puts ""
-        puts "Type numbers 1 - 25  for the meals you like."
+        puts "Type: numbers 1 - 25  for the meals you like."
         puts ""  
         puts "--------------------------------------------"
     
-        loop do 
+        loop do
+
         input = meals_choices 
         case input 
             when "menu" 
@@ -63,12 +64,8 @@ class Meals::Cli
                 print_single_meal(input)
             end
         end 
-        puts ""
-        puts " ----- Tpye: '1' for list or '2' to exit. -----"
-        puts ""
         menu
-     end
-
+    end
 
     def meals_choices
 
