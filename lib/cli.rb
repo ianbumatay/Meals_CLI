@@ -43,42 +43,39 @@ class Meals::Cli
         puts ""
         puts "Type the name of your the meal you like."  
         puts ""
-
-        #input = gets.strip.downcase 
-        #meals_choices(input)
-    
-        #meal_selected(input)
-        main_loop 
      
+        main_loop    
     end     
 
     def main_loop
         loop do 
-            input = meals_choices 
+          input = meals_choices 
             case input 
             when "exit" 
+                #exit
                 puts "type menu to go main menu"
                 break 
             when "invalid" 
                 next 
             else
-                puts input 
+                #puts input 
                 print_single_meal(input)
             end
         end 
         puts "in main menu method"
      end
 
+
     def meals_choices
         input = gets.strip.downcase 
         return input if input == "exit"
+        
         if input.to_i.between?(1, Meals::TheMeals.all.length)
             return input.to_i 
         else
-             puts "Please type number 1 - 25 for meals selection:"
-             return "invalid"
+            puts "Please type number 1 - 25 for meals selection:"
+            return "invalid"
         end 
-       
     end
     
 
@@ -88,21 +85,7 @@ class Meals::Cli
          puts "Cuisine: #{meal_obj.strArea}" 
          puts "Category: #{meal_obj.strCategory}" 
          puts "Youtube: #{meal_obj.strYoutube}" 
-         #Meals::Api.get_details(meal_obj) 
     end
-
-    #def meals_selected(meal) 
-       # meals = Meals::TheMeals.find_by_name(meal) 
-       # meals.each do |meal|   
-      
-           # puts "-----------------------------"
-            #puts "Name: #{meal.strMeal}"  
-            #puts "Cuisine: #{meal.strArea}" 
-            #puts "Category: #{meal.strCategory}" 
-            #puts "Youtube: #{meal.strYoutube}" 
-            #puts "-----------------------------"      
-       #end  
-    #end 
 
     def goodbye  
         puts ""
