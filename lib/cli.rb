@@ -1,14 +1,13 @@
 class Meals::Cli  
     
     def run 
-        start 
+        introduction
         Meals::Api.get_data
         menu  
-        #Meals::Api.get_data
     end
     
 
-    def start
+    def introduction
         puts ""
         puts "---------------  Welcome!  ------------"  
         puts ""
@@ -20,6 +19,7 @@ class Meals::Cli
     end
 
     def menu
+        
         input = gets.strip
         if input == "1" 
             meals_list 
@@ -28,7 +28,7 @@ class Meals::Cli
             goodbye 
         else 
             invalid 
-            menu
+             menu
         end
     end 
 
@@ -39,52 +39,60 @@ class Meals::Cli
         Meals::TheMeals.all.each.with_index(1) do |meal, index| 
             puts "#{index}. #{meal.strMeal}"
           end 
-        
-        puts ""
-        puts "Type the name of your the meal you like."  
-        puts ""
-     
-        main_loop    
+       main_loop    
     end     
 
-    def main_loop
+    def main_loop 
+
+        puts "-------------------------------------------"
+        puts ""
+        puts "Type 'menu' to go to main menu." 
+        puts ""
+        puts "Type numbers 1 - 25  for the meals you like."
+        puts ""  
+        puts "--------------------------------------------"
+    
         loop do 
-          input = meals_choices 
-            case input 
-            when "exit" 
-                #exit
-                puts "type menu to go main menu"
+        input = meals_choices 
+        case input 
+            when "menu" 
                 break 
             when "invalid" 
                 next 
             else
-                #puts input 
                 print_single_meal(input)
             end
         end 
-        puts "in main menu method"
+        puts ""
+        puts " ----- Tpye: '1' for list or '2' to exit. -----"
+        puts ""
+        menu
      end
 
 
     def meals_choices
+
         input = gets.strip.downcase 
-        return input if input == "exit"
+        return input if input == "menu"
         
         if input.to_i.between?(1, Meals::TheMeals.all.length)
             return input.to_i 
         else
-            puts "Please type number 1 - 25 for meals selection:"
+            puts ""
+            puts "----- Please type numbers 1 - 25 for meals selection. -----"
+            puts ""
             return "invalid"
         end 
     end
     
-
     def print_single_meal(i)
          meal_obj = Meals::TheMeals.all[i]
-         puts "#{meal_obj.strMeal}"
+         puts ""
+         puts "Name: #{meal_obj.strMeal}"
          puts "Cuisine: #{meal_obj.strArea}" 
          puts "Category: #{meal_obj.strCategory}" 
          puts "Youtube: #{meal_obj.strYoutube}" 
+         puts "--------------------------------------"
     end
 
     def goodbye  

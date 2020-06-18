@@ -24,8 +24,4 @@ class Meals::TheMeals
         meals_array.each {|meal_hash| self.new(meal_hash)}
     end 
 
-    #def self.find_by_name(name) 
-     #   self.all.select {|meal| meal.strMeal.downcase ==  name}    
-    #end
-
 end
