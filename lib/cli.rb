@@ -48,40 +48,46 @@ class Meals::Cli
         #meals_choices(input)
     
         #meal_selected(input)
-        main_loop
+        main_loop 
+     
     end     
 
     def main_loop
         loop do 
             input = meals_choices 
             case input 
-            when "exit"
+            when "exit" 
+                puts "type menu to go main menu"
                 break 
-            when "ivalid" 
+            when "invalid" 
                 next 
             else
                 puts input 
-                #print_single_meal(input)
+                print_single_meal(input)
             end
         end 
-        puts "in main loop method"
+        puts "in main menu method"
      end
 
     def meals_choices
         input = gets.strip.downcase 
         return input if input == "exit"
         if input.to_i.between?(1, Meals::TheMeals.all.length)
-            return input.to_i - 1
-            puts input
+            return input.to_i 
         else
-             puts "Oops!"
+             puts "Please type number 1 - 25 for meals selection:"
              return "invalid"
-        end
+        end 
+       
     end
     
 
-    def print_single_meal
-         meal_obj = Meals::TheMeals.all
+    def print_single_meal(i)
+         meal_obj = Meals::TheMeals.all[i]
+         puts "#{meal_obj.strMeal}"
+         puts "Cuisine: #{meal_obj.strArea}" 
+         puts "Category: #{meal_obj.strCategory}" 
+         puts "Youtube: #{meal_obj.strYoutube}" 
          #Meals::Api.get_details(meal_obj) 
     end
 
