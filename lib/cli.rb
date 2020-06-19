@@ -73,7 +73,7 @@ class Meals::Cli
         return input if input == "menu"
         
         if input.to_i.between?(1, Meals::TheMeals.all.length)
-            return input.to_i 
+            return input.to_i - 1 
         else
             puts ""
             puts "----- Please type numbers 1 - 25 for meals selection. -----"
