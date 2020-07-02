@@ -1,18 +1,25 @@
 # Meals
 
-Welcome to to my CLI gem project, a selection of famous  meals all over the world.
-Put your Ruby code in the file `lib/meals`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to to my CLI Gem Portfolio Project, a selection of famous  meals all over the world. 
+Where you can check the meals cuisine, category and a youtube video.
 
-TODO: created directory: bin and lib 
+
+in my bin directory:
 
       bin 
-        > run/executable file 
-      bin 
-        > api.rb 
-        > cli.rb 
-        > meals.rb 
+        > run file(this is my executable file) is created 
+          I added a shebang line #!/usr/bin/env ruby  to explicitly execute a ruby file.
 
-        and created environment file
+in my lib directory:
+
+          lib file where I created all my classes and environment file.
+        > api.rb or Class Api is where I consume my Api and grab the data for my project.
+        > cli.rb or Class Cli is my main point of communication through my user.
+        > meals.rb or Class TheMeals is my model class.
+
+and created environment file:
+
+        in this file I require all my gem/depencies and connected my bin directory via run file to my lib directory via environment file.
 
 ## Installation
 

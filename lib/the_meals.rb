@@ -22,6 +22,9 @@ class Meals::TheMeals
 
     def self.create_from_api(meals_array) 
         meals_array.each {|meal_hash| self.new(meal_hash)}
-    end 
+    end  
 
+    def self.meals_by_category(name)
+        Meals::TheMeals.select { |meal| meal.strCategory.downcase == name.downcase} 
+    end
 end
